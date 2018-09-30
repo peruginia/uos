@@ -7988,8 +7988,9 @@ begin
   SetLength(BufferplugINFLTMP, (StreamIn[x2].Data.outframes) *
   StreamIn[x2].Data.Channels);
 
+  // if div 2 SoundTouchPlug will not work on mono audio...
   if length(BufferplugINFLTMP) > 2 then
-  for x3 := 0 to (length(BufferplugINFLTMP) div 2) - 1 do
+  for x3 := 0 to (length(BufferplugINFLTMP) div StreamIn[x2].Data.Channels) - 1 do
   BufferplugINFLTMP[x3] := cfloat(StreamOut[x].Data.Buffer[x3]);
 
 // dealing with input plugin
